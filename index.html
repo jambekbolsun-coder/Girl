@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Особенное приглашение ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CANVAS for particles -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- BACKGROUND OVERLAY -->
+  <div class="bg-overlay"></div>
+  <div class="bokeh-layer"></div>
+
+  <!-- PETALS CONTAINER -->
+  <div id="petals-container"></div>
+
+  <!-- LANTERNS CONTAINER -->
+  <div id="lanterns-container"></div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrapper" id="progressWrapper">
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill"></div>
+      <span class="progress-label" id="progressLabel">0%</span>
+    </div>
+    <div class="progress-steps">
+      <span class="ps" data-step="1">📅</span>
+      <span class="ps" data-step="2">🕐</span>
+      <span class="ps" data-step="3">👗</span>
+      <span class="ps" data-step="4">📍</span>
+      <span class="ps" data-step="5">🎭</span>
+      <span class="ps" data-step="6">🌙</span>
+      <span class="ps" data-step="7">🎵</span>
+      <span class="ps" data-step="8">🎒</span>
+      <span class="ps" data-step="9">💌</span>
+    </div>
+  </div>
+
+  <!-- AI FRIEND -->
+  <div class="ai-friend" id="aiFriend">
+    <div class="ai-avatar">
+      <div class="ai-glow"></div>
+      <span class="ai-emoji">👧🏻</span>
+    </div>
+    <div class="ai-bubble" id="aiBubble"></div>
+  </div>
+
+  <!-- ===================== SCREEN 0: ENVELOPE ===================== -->
+  <section class="screen active" id="screen-0">
+    <div class="envelope-scene">
+      <div class="envelope" id="envelope">
+        <div class="env-body">
+          <div class="env-flap-back"></div>
+          <div class="env-pocket">
+            <div class="env-heart">❤️</div>
+          </div>
+          <div class="env-flap" id="envFlap"></div>
+        </div>
+        <div class="env-letter" id="envLetter">
+          <div class="letter-content">
+            <div class="letter-decoration">✦ ✦ ✦</div>
+            <p class="letter-greeting">Привет ❤️</p>
+            <p class="letter-text">Я долго думал, как пригласить тебя на свидание необычным способом.</p>
+            <p class="letter-text">Поэтому решил создать для тебя целый маленький мир.</p>
+            <p class="letter-text">Сегодня ты сама выберешь, каким будет наш идеальный вечер.</p>
+            <div class="letter-decoration">✦ ✦ ✦</div>
+            <button class="btn-primary letter-btn" id="startJourneyBtn">
+              <span class="btn-text">Создать наше свидание</span>
+              <span class="btn-glow"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="envelope-label">Для самой особенной ❤️</p>
+      <p class="envelope-hint">нажми, чтобы открыть</p>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 1: DATE ===================== -->
+  <section class="screen" id="screen-1">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">01</div>
+        <h2 class="step-title">Когда встретимся?</h2>
+        <p class="step-subtitle">Выбери нашу особенную дату</p>
+      </div>
+      <div class="calendar-wrapper">
+        <div class="cal-nav">
+          <button class="cal-btn" id="calPrev">‹</button>
+          <span class="cal-month-year" id="calMonthYear"></span>
+          <button class="cal-btn" id="calNext">›</button>
+        </div>
+        <div class="cal-weekdays">
+          <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+        </div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+      <div class="countdown-block" id="countdownBlock" style="display:none">
+        <p class="countdown-label">До нашего свидания:</p>
+        <div class="countdown-units">
+          <div class="cu"><span id="cdDays">00</span><small>дней</small></div>
+          <div class="cu"><span id="cdHours">00</span><small>часов</small></div>
+          <div class="cu"><span id="cdMins">00</span><small>минут</small></div>
+          <div class="cu"><span id="cdSecs">00</span><small>секунд</small></div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(1)">← Назад</button>
+        <button class="btn-primary" id="step1Next" onclick="goNext(1)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 2: TIME ===================== -->
+  <section class="screen" id="screen-2">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">02</div>
+        <h2 class="step-title">Время встречи</h2>
+        <p class="step-subtitle">Когда за тобой зайти?</p>
+      </div>
+      <div class="time-grid" id="timeGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(2)">← Назад</button>
+        <button class="btn-primary" id="step2Next" onclick="goNext(2)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 3: OUTFIT ===================== -->
+  <section class="screen" id="screen-3">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">03</div>
+        <h2 class="step-title">Стиль вечера</h2>
+        <p class="step-subtitle">Как ты хочешь выглядеть?</p>
+      </div>
+      <div class="choice-grid" id="outfitGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(3)">← Назад</button>
+        <button class="btn-primary" id="step3Next" onclick="goNext(3)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 4: PLACE ===================== -->
+  <section class="screen" id="screen-4">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">04</div>
+        <h2 class="step-title">Куда пойдём?</h2>
+        <p class="step-subtitle">Места Бишкека, которые ждут нас</p>
+      </div>
+      <div class="choice-grid" id="placeGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(4)">← Назад</button>
+        <button class="btn-primary" id="step4Next" onclick="goNext(4)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 5: ACTIVITIES ===================== -->
+  <section class="screen" id="screen-5">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">05</div>
+        <h2 class="step-title">Чем займёмся?</h2>
+        <p class="step-subtitle">Выбери наше занятие на вечер</p>
+      </div>
+      <div class="choice-grid" id="activityGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(5)">← Назад</button>
+        <button class="btn-primary" id="step5Next" onclick="goNext(5)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 6: MOOD ===================== -->
+  <section class="screen" id="screen-6">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">06</div>
+        <h2 class="step-title">Настроение вечера</h2>
+        <p class="step-subtitle">Какой ты хочешь эту ночь?</p>
+      </div>
+      <div class="mood-grid" id="moodGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(6)">← Назад</button>
+        <button class="btn-primary" id="step6Next" onclick="goNext(6)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 7: MUSIC ===================== -->
+  <section class="screen" id="screen-7">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">07</div>
+        <h2 class="step-title">Музыка вечера</h2>
+        <p class="step-subtitle">Что будет звучать?</p>
+      </div>
+      <div class="music-grid" id="musicGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(7)">← Назад</button>
+        <button class="btn-primary" id="step7Next" onclick="goNext(7)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 8: ESSENTIALS ===================== -->
+  <section class="screen" id="screen-8">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">08</div>
+        <h2 class="step-title">Возьмём с собой</h2>
+        <p class="step-subtitle">Что не забыть?</p>
+      </div>
+      <div class="choice-grid" id="essentialsGrid"></div>
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(8)">← Назад</button>
+        <button class="btn-primary" id="step8Next" onclick="goNext(8)" disabled>Далее →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 9: WISHES ===================== -->
+  <section class="screen" id="screen-9">
+    <div class="step-container">
+      <div class="step-header">
+        <div class="step-number">09</div>
+        <h2 class="step-title">Особые пожелания</h2>
+        <p class="step-subtitle">Расскажи мне о своих мечтах</p>
+      </div>
+      <div class="wishes-wrapper">
+        <textarea class="wishes-textarea" id="wishesInput" placeholder="Напиши всё, что хочешь… я исполню ❤️" maxlength="500"></textarea>
+        <div class="char-count"><span id="charCount">0</span>/500</div>
+      </div>
+
+      <!-- SURPRISE BLOCK -->
+      <div class="surprise-block">
+        <button class="btn-surprise" id="surpriseBtn">✨ Нажми, если любишь сюрпризы</button>
+        <div class="surprise-message" id="surpriseMsg"></div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-secondary" onclick="goBack(9)">← Назад</button>
+        <button class="btn-primary" onclick="goNext(9)">Завершить ✨</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SCREEN 10: FINAL ===================== -->
+  <section class="screen" id="screen-10">
+    <div class="step-container final-container">
+      <div class="final-header">
+        <div class="final-hearts">❤️ ❤️ ❤️</div>
+        <h2 class="final-title">Наш идеальный вечер</h2>
+        <p class="final-subtitle">Ты создала что-то волшебное</p>
+      </div>
+
+      <div class="summary-card" id="summaryCard"></div>
+
+      <div class="send-section">
+        <p class="send-title">Отправить подтверждение:</p>
+        <div class="send-buttons">
+          <button class="btn-whatsapp" id="waBtn">
+            <span class="btn-icon">📱</span>
+            <span>WhatsApp</span>
+          </button>
+          <button class="btn-telegram" id="tgBtn">
+            <span class="btn-icon">✈️</span>
+            <span>Telegram</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="restart-section">
+        <button class="btn-restart" onclick="restartSite()">Начать заново ↺</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICRO TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
