@@ -47,6 +47,16 @@ const OUTFITS = [
   { icon: '🍷', label: 'Бордо-бархат' },
   { icon: '🫧', label: 'Жемчужный шик' },
   { icon: '✨', label: 'С блёстками' },
+  { icon: '🧥', label: 'Горы + худи' },
+{ icon: '🥾', label: 'Для прогулки по Ала-Арче' },
+{ icon: '🕶️', label: 'Бишкекский летний вайб' },
+{ icon: '🏔️', label: 'Горный стиль' },
+{ icon: '☕', label: 'Кофейный минимализм' },
+{ icon: '🌅', label: 'Закатный образ' },
+{ icon: '🎀', label: 'Милый корейский стиль' },
+{ icon: '🖤', label: 'Уличный Бишкек-стайл' },
+{ icon: '🧢', label: 'Streetwear' },
+{ icon: '💜', label: 'Лавандовый вайб' },
 ];
 
 const PLACES = [
@@ -72,6 +82,24 @@ const PLACES = [
   { icon: '🚂', label: 'Ночной Бишкек-тур' },
   { icon: '🏖️', label: 'Зона отдыха «Берег»' },
   { icon: '🎪', label: 'Цирк Бишкека' },
+  { icon: '🥙', label: 'Эки Дос' },
+{ icon: '🍔', label: 'Burger House' },
+{ icon: '🍟', label: 'Sonic' },
+{ icon: '☕', label: 'Adriano Coffee' },
+{ icon: '🍰', label: 'Bellagio Coffee' },
+{ icon: '🌲', label: 'Ала-Арча' },
+{ icon: '🏔️', label: 'Чункурчак' },
+{ icon: '🎿', label: 'ЗИЛ Горнолыжка' },
+{ icon: '⛷️', label: 'Кашка-Суу' },
+{ icon: '🚠', label: 'Панорама над Бишкеком' },
+{ icon: '🌄', label: 'Закат в горах' },
+{ icon: '🏕️', label: 'Пикник за городом' },
+{ icon: '🛼', label: 'Каток' },
+{ icon: '🚴', label: 'Велопрогулка' },
+{ icon: '🧋', label: 'Кофейня с Bubble Tea' },
+{ icon: '🍣', label: 'Суши-вечер' },
+{ icon: '🌃', label: 'Ночной Бишкек' },
+{ icon: '🎡', label: 'Азия Молл' },
 ];
 
 const ACTIVITIES = [
@@ -110,6 +138,14 @@ const MOODS = [
   { emoji: '🌸', name: 'Нежно',       desc: 'Тихо и спокойно' },
   { emoji: '⚡', name: 'Ярко',        desc: 'Не забыть никогда' },
   { emoji: '☁️', name: 'Мечтательно', desc: 'В облаках' },
+  { emoji: '🏔️', name: 'Горный вайб', desc: 'Свежий воздух и свобода' },
+{ emoji: '🌆', name: 'Ночной Бишкек', desc: 'Огни большого города' },
+{ emoji: '☕', name: 'Кофейный', desc: 'Спокойно и уютно' },
+{ emoji: '🎶', name: 'Музыкальный', desc: 'Под любимые треки' },
+{ emoji: '🌄', name: 'Закатный', desc: 'Красивые моменты' },
+{ emoji: '💜', name: 'Милый', desc: 'Тёплая атмосфера' },
+{ emoji: '🚗', name: 'Дорожный вайб', desc: 'Поездка без цели' },
+{ emoji: '🥙', name: 'Вкусный вечер', desc: 'Еда и разговоры' },
 ];
 
 const MUSIC = [
@@ -119,6 +155,18 @@ const MUSIC = [
   { icon: '🎧', name: 'Lo-fi' },
   { icon: '🎷', name: 'Jazz' },
   { icon: '🎁', name: 'Сюрприз' },
+  { icon: '🇰🇬', name: 'Кыргызская поп-музыка' },
+{ icon: '🎼', name: 'Кыргызские хиты' },
+{ icon: '🎤', name: 'Мирбек Атабеков' },
+{ icon: '🎵', name: 'Бек Борбиев' },
+{ icon: '🎶', name: 'Кайрат Примбердиев' },
+{ icon: '🎧', name: 'Кыргызский рэп' },
+{ icon: '🏔️', name: 'Этно Кыргызстан' },
+{ icon: '🪕', name: 'Комуз' },
+{ icon: '🚗', name: 'Музыка для ночных поездок' },
+{ icon: '🌙', name: 'Ночной Бишкек Playlist' },
+{ icon: '☕', name: 'Coffee House Vibes' },
+{ icon: '🎹', name: 'Piano Relax' },
 ];
 
 const ESSENTIALS = [
@@ -138,6 +186,7 @@ const ESSENTIALS = [
   { icon: '🎀', label: 'Лента-сюрприз' },
   { icon: '🧁', label: 'Домашний кекс' },
   { icon: '📖', label: 'Книга стихов' },
+  { icon: '🥙', label: 'Шаурма на двоих' },
 ];
 
 const ROMANTIC_PHRASES = [
